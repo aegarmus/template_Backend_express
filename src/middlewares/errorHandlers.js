@@ -1,13 +1,14 @@
-import { CustomError } from "../errors/CustomError.js";
-import { InternalServerError } from "../errors/TypeError.js";
+import { CustomError } from '../errors/CustomError.js';
+import { InternalServerError } from '../errors/TypeError.js';
 
-export const errorHandler = (err, req, res, next) => {
+
+export const errorHandler = (err, req, res, _next) => {
     if(!(err instanceof CustomError)) {
         err = new InternalServerError(
             err.message || 'Error Inesperado',
             500,
             'Error inesperado, por favor contacta con nuestro equipo de Soporte'
-        )
+        );
     }
 
     const errorResponse = {
@@ -15,7 +16,7 @@ export const errorHandler = (err, req, res, next) => {
         message: err.message,
         code: err.statusCode,
         details: err.details
-    }
+    };
 
     console.error(
         `ERROR: 
@@ -25,7 +26,7 @@ export const errorHandler = (err, req, res, next) => {
 
             --->Status: ${err.statusCode}
         `
-    )
+    );
 
-    res.status(err.statusCode).json(errorResponse)
-}
+    res.status(err.statusCode).json(errorResponse);
+};

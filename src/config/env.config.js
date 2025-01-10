@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-dotenv.config()
+dotenv.config();
 
 export const config = {
     port: process.env.PORT || 3000,
@@ -12,4 +12,4 @@ export const config = {
         port: process.env.DB_PORT || 5432,
         dialect: process.env.DB_DIALECT || 'postgres'
     },
-}
+};

@@ -13,6 +13,6 @@ app.use(express.urlencoded({ extended: true}));
 
 //Agregar configuraciones y middlewares para rutas
 
-app.use(errorHandler)
+app.use(errorHandler);
 
-serverInit(app)
+serverInit(app);
